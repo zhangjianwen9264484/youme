@@ -16,9 +16,10 @@
     // $page = 0;
   // }
   $count = $pdo -> query("select count(*) from tb_article");
+  $fwl = $pdo -> query("select * from tb_article");
   $res = $pdo -> query("select * from tb_article limit $page,10");
-  $row = $count -> fetch();
-  $pageall = ceil(intval($row[0])/10);
+  $row_c = $count -> fetch();
+  $pageall = ceil(intval($row_c[0])/10);
   // var_dump($pageall);
   // foreach ($res as $key => $row) {
 ?>
@@ -63,12 +64,9 @@
         while($row_ins = $res_ins->fetch()){
           $see_num = $row_ins[0];
         }
-        if($_SERVER['HTTP_HOST'] == "youme.com/web/article.php?id=$id"){
-          $up = $pdo->exec("update tb_article set views = views+1 where art_id = $row_id");
-        }
 echo "<div class='post multi-post cate4 auth1'>";
 	echo "<h4 class='post-date'>";echo $row['up_date'];echo "</h4>";
-	echo "<h2 class='post-title'>";echo "<a href='article.php?id=".$row[0]."'>";echo $row[2];echo "</a></h2>";
+	echo "<h2 class='post-title'>";echo "<a href='article.php?id=".$row[1]."'>";echo $row[2];echo "</a></h2>";
 	echo "<div class='post-body'><p>";echo $row['lead'];echo "</p></div>";
 	echo "<h5 class='post-tags'>Tags: <span class='tags'><a href='tags.php?tags=".$row[9]."'>".$row[9]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row[10]."'>".$row[10]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row[11]."'>".$row[11]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row[12]."'>".$row[12]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row[13]."'>".$row[13]."</a>&nbsp;&nbsp;</span></h5>";
 	echo "<h6 class='post-footer'>

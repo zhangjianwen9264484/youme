@@ -1,9 +1,13 @@
 <?php
 	// header("Content-Type:text/html;charset=UTF-8");
-	$art_id = @$_GET['id'];
-	
 	$pdo = new PDO("mysql:local=localhost;dbname=db_youme","root","root");
 	$pdo -> query("set names utf8;");
+	$art_id = @$_GET['id'];
+
+	if($_SERVER['HTTP_HOST']){
+		$up = $pdo->exec("update tb_article set views = views+1 where art_id = $art_id");
+	}
+
 	$res = $pdo -> query("select * from tb_article where art_id = $art_id");
 	$row = $res -> fetch();
 	$content = str_replace(" ","<br />",$row['content']);

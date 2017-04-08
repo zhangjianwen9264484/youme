@@ -1,6 +1,7 @@
 <?php
 	// header("Content-Type:text/html;charset=UTF-8");
 	$art_id = @$_GET['id'];
+	
 	$pdo = new PDO("mysql:local=localhost;dbname=db_youme","root","root");
 	$pdo -> query("set names utf8;");
 	$res = $pdo -> query("select * from tb_article where art_id = $art_id");

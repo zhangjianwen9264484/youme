@@ -55,7 +55,7 @@
 			//   var_dump($row);
 
 				// var_dump($row['tag_1']);
-				$row_id = $value['art_id'];
+				$row_id = $row['art_id'];
 			$mes_sum_num = $pdo->query("select count(message) from tb_message where art_id = $row_id");
   			$mes_sum = $mes_sum_num->fetch();
   			$sum = $mes_sum[0];

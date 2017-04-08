@@ -59,23 +59,13 @@
 			$mes_sum_num = $pdo->query("select count(message) from tb_message where art_id = $row_id");
   			$mes_sum = $mes_sum_num->fetch();
   			$sum = $mes_sum[0];
-
-			  if($_SERVER["HTTP_HOST"] == "http://youme.com/web/article.php?id='$id'"){
-			    $insert = "update tb_article set views = views+1 where art_id = $row_id";
-			    $pdo -> exec($insert);
-			  }
-			  $see = "select views from tb_article where art_id = $row_id";
-			  $see_row = $pdo->query($see);
-			  while($see_res = $see_row->fetch()){
-			    $see_num = $see_res[0];
-			  }
 			echo "<div class='post multi-post cate4 auth1'>";
 			echo "<h4 class='post-date'>";echo $row['up_date'];echo "</h4>";
 			echo "<h2 class='post-title'><a href='article.php?id=".$row['id']."'>";echo $row['headline'];echo "</a></h2>";
 			echo "<div class='post-body'><p>";echo $row['lead'];echo "</p></div>";
 			echo "<h5 class='post-tags'>Tags: <span class='tags'><a href='tags.php?tags=".$row['9']."'>".$row[9]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row['10']."'>".$row[10]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row['11']."'>".$row[11]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row['12']."'>".$row[12]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row['13']."'>".$row[13]."</a>&nbsp;&nbsp;</span></h5>
 			<h6 class='post-footer'>
-			发布:圈圈 | 分类:".$row['class']." | 评论: ".$sum."| 浏览:".$see_num."";
+			发布:圈圈 | 分类:".$row['class']." | 评论: ".$sum."| 浏览:";
 			echo "<script type='text/javascript'>LoadViewCount(77)</script> | <a href='article.php?id=".$row['id']."'>阅读全文 > </a>
 			</h6>";
 			echo "</div>";

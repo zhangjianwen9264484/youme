@@ -54,28 +54,17 @@
       <?php
       foreach ($res as $key => $row) {
         // var_dump($row);
-        
+        $row_id = $row['art_id'];
+      $mes_sum_num = $pdo->query("select count(message) from tb_message where art_id = $row_id");
+        $mes_sum = $mes_sum_num->fetch();
+        $sum = $mes_sum[0];
 echo "<div class='post multi-post cate4 auth1'>";
 	echo "<h4 class='post-date'>";echo $row['up_date'];echo "</h4>";
 	echo "<h2 class='post-title'>";echo "<a href='article.php?id=".$row[0]."'>";echo $row[2];echo "</a></h2>";
 	echo "<div class='post-body'><p>";echo $row['lead'];echo "</p></div>";
 	echo "<h5 class='post-tags'>Tags: <span class='tags'><a href='tags.php?tags=".$row[9]."'>".$row[9]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row[10]."'>".$row[10]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row[11]."'>".$row[11]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row[12]."'>".$row[12]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$row[13]."'>".$row[13]."</a>&nbsp;&nbsp;</span></h5>";
-  $row_id = $row['art_id'];
-  $mes_sum_num = $pdo->query("select count(message) from tb_message where art_id = $row_id");
-  $mes_sum = $mes_sum_num->fetch();
-  $sum = $mes_sum[0];
-  if($_SERVER["HTTP_HOST"] == "http://youme.com/web/article.php?id='$id'"){
-    $insert = "update tb_article set views = views+1 where art_id = $row_id";
-    $pdo -> exec($insert);
-  }
-  $see = "select views from tb_article where art_id = $row_id";
-  $see_row = $pdo->query($see);
-  while($see_res = $see_row->fetch()){
-    $see_num = $see_res[0];
-  }
-
 	echo "<h6 class='post-footer'>
-		发布:圈圈 | 分类:".$row[14]." | 评论:".$sum." | 浏览:".$see_num."| <a href='article.php?id=".$row[0]."'>阅读全文 > </a>
+		发布:圈圈 | 分类:".$row[14]." | 评论:".$sum." | 浏览:| <a href='article.php?id=".$row[0]."'>阅读全文 > </a>
 	</h6>";
 echo "</div>";
 }
@@ -115,12 +104,12 @@ echo "</div>";
       echo "<li>";
     }
     foreach ($res_1 as $key => $row_1) {
-      echo "<script l>
-        function jump() {
-          window.location='http://www.baidu.com';
-        }
-      </script>";
-      echo "<a onclick='jump()' target='_blank'>";
+      // echo "<script>
+      //   function jump() {
+      //     window.location='http://www.baidu.com';
+      //   }
+      // </script>";
+      echo "<a target='_blank' href='".$row_1['url']."'>";
       echo $row_1['url_name'];
       echo "</a>";
     }
@@ -130,7 +119,6 @@ echo "</div>";
     }
   }
   echo "</ul>";
-  
  ?>
 <!-- <ul><li><a href="http://www.nszbk.com" target="_blank">逆时针博客</a>　<a href="http://www.mybiketimes.com/" target="_blank">单车岁月</a>　<a href="http://www.lopwon.com/" target="_blank">立云图志</a></li><li><a href="http://qingchun.org/"target="_blank">青春</a>　<a href="http://www.gaohaipeng.com" target="_blank">高海鹏博客</a>　<a href="http://www.ccaipu.com/" target="_blank">程晨爱蒲</a>　</li></li><li><a href="http://lusongsong.com/daohang" rel="external nofollow" target="_blank">博客大全</a>　<a href="http://bestcherish.com/" target="_blank">灰常记忆</a>　<a href="http://www.swdsblog.com" target="_blank">随望淡思</a></li><li><a href="http://www.wangzhijun.com.cn" target="_blank">王志军博客</a>　<a href="http://duonuli.com/" target="_blank">多努力网</a></li><li></li><li><a href="http://www.panoramio.com/user/youmew" target="_blank">谷歌地球相册</a></li><li><a href="http://www.youmew.com/t/post-18.html" target="_blank" title="申请链接"><span style="color:#006000;">交换友情链接</span></a></li></ul> -->
 </dd>
@@ -143,13 +131,8 @@ echo "</div>";
 
 		</div>
 		<div id="divBottom">
-      <?php
-          $stmt =$pdo ->prepare("select webmaster,ICP from tb_webmasterinfo");
-          $stmt ->execute();
-          $rows =$stmt ->fetch(PDO::FETCH_ASSOC);
-      ?>
-          <h3 id="BlogCopyRight"><script src="http://s20.cnzz.com/stat.php?id=681872&web_id=681872&show=pic" language="JavaScript"></script>　<?php echo @$rows["ICP"];?></h3>
-			<h4 id="BlogPowerBy">Powered By <a href="http://www.rainbowsoft.org/" title="RainbowSoft Studio Z-Blog" target="_blank"><?php echo @$rows["webmaster"];?></a>　本站遵循<a rel="license" target="_blank" title="署名-非商业性使用-禁止演绎 3.0 中国大陆许可协议" href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/"> CC BY-NC-ND 3.0 CN协议 </a>。</h4>
+          <h3 id="BlogCopyRight"><script src="http://s20.cnzz.com/stat.php?id=681872&web_id=681872&show=pic" language="JavaScript"></script>　陕ICP备11002139号-1</h3>
+			<h4 id="BlogPowerBy">Powered By <a href="http://www.rainbowsoft.org/" title="RainbowSoft Studio Z-Blog" target="_blank">Z-Blog</a>　本站遵循<a rel="license" target="_blank" title="署名-非商业性使用-禁止演绎 3.0 中国大陆许可协议" href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/"> CC BY-NC-ND 3.0 CN协议 </a>。</h4>
 		</div><div class="clear"></div>
 	</div><div class="clear"></div>
 	</div><div class="clear"></div>

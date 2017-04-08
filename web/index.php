@@ -104,12 +104,12 @@ echo "</div>";
       echo "<li>";
     }
     foreach ($res_1 as $key => $row_1) {
-      echo "<script l>
-        function jump() {
-          window.location='http://www.baidu.com';
-        }
-      </script>";
-      echo "<a onclick='jump()' target='_blank'>";
+      // echo "<script>
+      //   function jump() {
+      //     window.location='http://www.baidu.com';
+      //   }
+      // </script>";
+      echo "<a target='_blank' href='".$row_1['url']."'>";
       echo $row_1['url_name'];
       echo "</a>";
     }
@@ -131,13 +131,8 @@ echo "</div>";
 
 		</div>
 		<div id="divBottom">
-      <?php
-          $stmt =$pdo ->prepare("select webmaster,ICP from tb_webmasterinfo");
-          $stmt ->execute();
-          $rows =$stmt ->fetch(PDO::FETCH_ASSOC);
-      ?>
-          <h3 id="BlogCopyRight"><script src="http://s20.cnzz.com/stat.php?id=681872&web_id=681872&show=pic" language="JavaScript"></script>　<?php echo @$rows["ICP"];?></h3>
-			<h4 id="BlogPowerBy">Powered By <a href="http://www.rainbowsoft.org/" title="RainbowSoft Studio Z-Blog" target="_blank"><?php echo @$rows["webmaster"];?></a>　本站遵循<a rel="license" target="_blank" title="署名-非商业性使用-禁止演绎 3.0 中国大陆许可协议" href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/"> CC BY-NC-ND 3.0 CN协议 </a>。</h4>
+          <h3 id="BlogCopyRight"><script src="http://s20.cnzz.com/stat.php?id=681872&web_id=681872&show=pic" language="JavaScript"></script>　陕ICP备11002139号-1</h3>
+			<h4 id="BlogPowerBy">Powered By <a href="http://www.rainbowsoft.org/" title="RainbowSoft Studio Z-Blog" target="_blank">Z-Blog</a>　本站遵循<a rel="license" target="_blank" title="署名-非商业性使用-禁止演绎 3.0 中国大陆许可协议" href="http://creativecommons.org/licenses/by-nc-nd/3.0/cn/"> CC BY-NC-ND 3.0 CN协议 </a>。</h4>
 		</div><div class="clear"></div>
 	</div><div class="clear"></div>
 	</div><div class="clear"></div>

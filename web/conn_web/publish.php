@@ -27,7 +27,7 @@
 			echo "<script>alert('验证码不能为空!');</script>";
 		}else if($_SESSION['code'] == $mes_verify){
 			$pdo->exec($sql);
-			echo "<script>location='article.php?id=".$art_id."'</script>";
+			echo "<script>location='article.php?id=".$id."'</script>";
 		}else{
 			echo "<script>alert('验证码错误!');</script>";
 		}

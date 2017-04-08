@@ -76,8 +76,8 @@
             </div>
             <div class="result-content">
                 <div class="short-wrap">
-                      <a href="insert.php"><i class="icon-font">&#xe001;</i>新增作品</a>
-                      <a href="insert.php"><i class="icon-font">&#xe005;</i>新增博文</a>
+                    <a href="#"><i class="icon-font">&#xe001;</i>新增作品</a>
+                    <a href="#"><i class="icon-font">&#xe005;</i>新增博文</a>
                     <a href="#"><i class="icon-font">&#xe048;</i>新增作品分类</a>
                     <a href="#"><i class="icon-font">&#xe041;</i>新增博客分类</a>
                     <a href="#"><i class="icon-font">&#xe01e;</i>作品评论</a>
@@ -90,29 +90,39 @@
             </div>
             <div class="result-content">
                 <ul class="sys-info-list">
+                <?php
+                     $os = php_uname('s'); 
+                     $exe = php_sapi_name();
+                     $php = apache_get_version();
+                     $upload =  ini_get('upload_max_filesize');
+                     $date =date("Y年m月d日 h:i:s");
+                     $ip =  GetHostByName($_SERVER['SERVER_NAME']);
+                     $dns = $_SERVER['SERVER_NAME'] ." ".$ip;
+                                  
+                ?>
                     <li>
-                        <label class="res-lab">操作系统</label><span class="res-info">WINNT</span>
+                        <label class="res-lab">操作系统</label><span class="res-info"><?php echo $os;?></span>
                     </li>
                     <li>
-                        <label class="res-lab">运行环境</label><span class="res-info">Apache/2.2.21 (Win64) PHP/5.3.10</span>
+                        <label class="res-lab">运行环境</label><span class="res-info"><?php echo $php; ?></span>
                     </li>
                     <li>
-                        <label class="res-lab">PHP运行方式</label><span class="res-info">apache2handler</span>
+                        <label class="res-lab">PHP运行方式</label><span class="res-info"><?php echo $exe;?></span>
                     </li>
                     <li>
                         <label class="res-lab">静静设计-版本</label><span class="res-info">v-0.1</span>
                     </li>
                     <li>
-                        <label class="res-lab">上传附件限制</label><span class="res-info">2M</span>
+                        <label class="res-lab">上传附件限制</label><span class="res-info"><?php echo $upload;?></span>
                     </li>
                     <li>
-                        <label class="res-lab">北京时间</label><span class="res-info">2014年3月18日 21:08:24</span>
+                        <label class="res-lab">北京时间</label><span class="res-info"><?php echo $date;?></span>
                     </li>
                     <li>
-                        <label class="res-lab">服务器域名/IP</label><span class="res-info">localhost [ 127.0.0.1 ]</span>
+                        <label class="res-lab">服务器域名/IP</label><span class="res-info"><?php echo $dns;?></span>
                     </li>
                     <li>
-                        <label class="res-lab">Host</label><span class="res-info">127.0.0.1</span>
+                        <label class="res-lab">Host</label><span class="res-info"><?php echo $ip; ?></span>
                     </li>
                 </ul>
             </div>
@@ -126,7 +136,7 @@
                     <li>
                         <label class="res-lab">ThinkPHP交流群：</label><span class="res-info">484519446</span>
                     </li>
-
+                    
                 </ul>
             </div>
         </div>

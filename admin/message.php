@@ -49,9 +49,9 @@
                     <a href="#"><i class="icon-font">&#xe018;</i>系统管理</a>
                     <ul class="sub-menu">
                         <li><a href="system.php"><i class="icon-font">&#xe017;</i>系统设置</a></li>
-                        <li><a href="system.php"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
-                        <li><a href="system.php"><i class="icon-font">&#xe046;</i>数据备份</a></li>
-                        <li><a href="system.php"><i class="icon-font">&#xe045;</i>数据还原</a></li>
+                        <li><a href="cleancache.php"><i class="icon-font">&#xe037;</i>清理缓存</a></li>
+                        <li><a href="backup.php"><i class="icon-font">&#xe046;</i>数据备份</a></li>
+                        <li><a href="restore.php"><i class="icon-font">&#xe045;</i>数据还原</a></li>
                     </ul>
                 </li>
             </ul>

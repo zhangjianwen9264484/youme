@@ -16,8 +16,8 @@
 			closedir($dh);
 		}
 	}
-	//var_dump($arr);
+	
     $db= new DbManage;
-    $sqlfile ='./backup/$arr';
+    $sqlfile ='./backup/'."$arr[1]";
     $db->restore($sqlfile);
 ?>

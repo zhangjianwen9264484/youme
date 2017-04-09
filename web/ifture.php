@@ -56,13 +56,18 @@
 			$mes_sum_num = $pdo->query("select count(message) from tb_message where art_id = $row_id");
   			$mes_sum = $mes_sum_num->fetch();
   			$sum = $mes_sum[0];
+  			$inser = "select views from tb_article where art_id = $row_id";
+        $res_ins = $pdo->query($inser);
+        while($row_ins = $res_ins->fetch()){
+          $see_num = $row_ins[0];
+      }
 		echo "<div class='post multi-post cate4 auth1'>";
 		echo "<h4 class='post-date'>";echo $value['up_date'];echo "</h4>";
 		echo "<h2 class='post-title'><a href='article.php?id=".$value['id']."'>";echo $value['headline'];echo "</a></h2>";
 		echo "<div class='post-body'><p>";echo $value['lead'];echo "</p></div>";
 		echo "<h5 class='post-tags'>Tags: <span class='tags'><a href='tags.php?tags=".$value['9']."'>".$value[9]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$value['10']."'>".$value[10]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$value['11']."'>".$value[11]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$value['12']."'>".$value[12]."</a>&nbsp;&nbsp;<a href='tags.php?tags=".$value['13']."'>".$value[13]."</a>&nbsp;&nbsp;</span></h5>
 		<h6 class='post-footer'>
-		发布:圈圈 | 分类:".$value['class']." | 评论:".$sum." | 浏览:";
+		发布:圈圈 | 分类:".$value['class']." | 评论:".$sum." | 浏览:".$see_num."";
 		echo "<script type='text/javascript'>LoadViewCount(77)</script> | <a href='article.php?id=".$value['id']."'>阅读全文 > </a>
 		</h6>";
 		echo "</div>";
@@ -81,7 +86,8 @@
 <dl class="function" id="divComments">
 <dt class="function_t">最新留言</dt>
 <dd class="function_c">
-<ul><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/76.html#cmt1492" title="2016-7-14 20:22:16 post by 卢松松博客">说的很不错呢！</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/68.html#cmt1491" title="2016-7-12 16:21:06 post by 52微商网">一个很好的微商货源平台，非常适合做微商推</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/77.html#cmt1490" title="2016-7-10 9:48:23 post by 巴力迅猛龙">谢谢博主分享 支持</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/guestbook.html#cmt1488" title="2016-7-8 17:20:43 post by 个人博客">第一次过来看看</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/76.html#cmt1487" title="2016-7-6 17:08:25 post by 免费小说在线阅读">懂得取舍吧，最好留有后路、</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/77.html#cmt1486" title="2016-7-5 13:12:38 post by 免费小说在线阅读">靠自己丰衣足食！</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/77.html#cmt1485" title="2016-7-3 10:53:55 post by 贝蒂斯橄榄油总代理">第一次来，写的不错，关注下</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/77.html#cmt1484" title="2016-7-2 16:18:16 post by 卢松松博客">当初看这个并没有觉得什么，现在看来里面和</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/76.html#cmt1483" title="2016-7-2 12:04:12 post by 青岛礼品公司">人生确实就是个赌局，就看赌注和勇气大小了</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/74.html#cmt1482" title="2016-6-29 15:50:16 post by 青岛小礼品">长大了，烦恼也就多了</a></li></ul>
+<!-- <ul><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/76.html#cmt1492" title="2016-7-14 20:22:16 post by 卢松松博客">说的很不错呢！</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/68.html#cmt1491" title="2016-7-12 16:21:06 post by 52微商网">一个很好的微商货源平台，非常适合做微商推</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/77.html#cmt1490" title="2016-7-10 9:48:23 post by 巴力迅猛龙">谢谢博主分享 支持</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/guestbook.html#cmt1488" title="2016-7-8 17:20:43 post by 个人博客">第一次过来看看</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/76.html#cmt1487" title="2016-7-6 17:08:25 post by 免费小说在线阅读">懂得取舍吧，最好留有后路、</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/77.html#cmt1486" title="2016-7-5 13:12:38 post by 免费小说在线阅读">靠自己丰衣足食！</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/77.html#cmt1485" title="2016-7-3 10:53:55 post by 贝蒂斯橄榄油总代理">第一次来，写的不错，关注下</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/77.html#cmt1484" title="2016-7-2 16:18:16 post by 卢松松博客">当初看这个并没有觉得什么，现在看来里面和</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/76.html#cmt1483" title="2016-7-2 12:04:12 post by 青岛礼品公司">人生确实就是个赌局，就看赌注和勇气大小了</a></li><li style="text-overflow:ellipsis;"><a href="http://www.youmew.com/post/74.html#cmt1482" title="2016-6-29 15:50:16 post by 青岛小礼品">长大了，烦恼也就多了</a></li></ul> -->
+<?php include('conn_web/left_leavword.php'); ?>
 </dd>
 </dl><dl class="function" id="divMisc">
 <dt class="function_t">分享到：</dt>
